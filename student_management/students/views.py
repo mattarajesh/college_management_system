@@ -26,3 +26,20 @@ def list_student(request):
         "students":students
     }
     return render(request,"students/list_student.html",context)
+def update_student(request):
+    if request.method == "POST":
+        id = request.POST["id"]
+        name = request.POST["name"]
+        age = request.POST["age"]
+        email = request.POST["email"]
+
+        s = student.objects.get(id=id)
+
+        s.name = name
+        s.age = age
+        s.email = email
+
+        s.save()
+
+        return redirect("student_list")
+    return render(request,"students/update_student.html")
