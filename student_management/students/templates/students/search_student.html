@@ -2,7 +2,24 @@
 
 {% block content %}
 
-<h2>Student List</h2>
+<h2>Search Student</h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Student Name</label><br>
+    <input type="text" name="name" placeholder="Enter Student Name" required><br><br>
+
+    <button type="submit">Search</button>
+
+</form>
+
+<hr>
+
+{% if students %}
+
+<h3>Search Results</h3>
 
 <table border="1" cellpadding="10">
 
@@ -25,5 +42,7 @@
     {% endfor %}
 
 </table>
+
+{% endif %}
 
 {% endblock %}

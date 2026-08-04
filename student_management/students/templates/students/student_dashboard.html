@@ -1,4 +1,4 @@
-{% extends "students/base.html" %}
+{% extends "students/student_base.html" %}
 
 {% block content %}
 
@@ -12,6 +12,9 @@
     <li><a href="{% url 'add_student' %}">Add Student</a></li>
     <li><a href="{% url 'student_list' %}">Student List</a></li>
     <li><a href="{% url 'update_student' %}">update student</a></li>
+    <li><a href="{% url 'delete_student' %}">delete student</a></li>
+    <li><a href="{% url 'search_student' %}">search student</a></li>
+
 </ul>
 
 <hr>

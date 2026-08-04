@@ -43,3 +43,29 @@ def update_student(request):
 
         return redirect("student_list")
     return render(request,"students/update_student.html")
+def delete_student(request):
+    if request.method == "POST":
+        id = request.POST["id"]
+
+        s = student.objects.get(id=id)
+
+        s.delete()
+
+        return redirect("student_list")
+
+    return render(request,"students/delete_student.html")
+
+def search_student(request):
+    students = []
+
+    if request.method == "POST":
+        name = request.POST["name"]
+
+        students = student.objects.filter(name__icontains=name)
+
+    context = {
+        "students" : students
+    }
+
+    return render(request,"students/search_student.html",context)
+
