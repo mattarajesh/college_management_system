@@ -8,17 +8,14 @@
 
     {% csrf_token %}
 
-    <label>Student ID</label><br>
-    <input type="number" name="id"><br><br>
-
     <label>Name</label><br>
-    <input type="text" name="name"><br><br>
+    <input type="text" name="name" value="{{ student.name }}"><br><br>
 
     <label>Age</label><br>
-    <input type="number" name="age"><br><br>
+    <input type="number" name="age" value="{{ student.age }}"><br><br>
 
     <label>Email</label><br>
-    <input type="email" name="email"><br><br>
+    <input type="email" name="email" value="{{ student.email }}"><br><br>
 
     <button type="submit">Update Student</button>
 

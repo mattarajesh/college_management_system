@@ -6,24 +6,71 @@
 
 <table border="1" cellpadding="10">
 
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Email</th>
-    </tr>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Action</th>
+</tr>
 
-    {% for student in students %}
+{% for student in page_obj %}
 
-    <tr>
-        <td>{{ student.id }}</td>
-        <td>{{ student.name }}</td>
-        <td>{{ student.age }}</td>
-        <td>{{ student.email }}</td>
-    </tr>
+<tr>
 
-    {% endfor %}
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.age }}</td>
+    <td>{{ student.email }}</td>
+
+    <td>
+        <a href="{% url 'view_student' student.id %}">View</a>
+        <a href="{% url 'update_student' student.id %}">Edit</a>|
+        <a href="{% url 'delete_student' student.id %}">Delete</a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
 
 </table>
+<br>
+
+<div>
+
+    {% if page_obj.has_previous %}
+
+        <a href="?page=1">First</a>
+
+        <a href="?page={{ page_obj.previous_page_number }}">
+            Previous
+        </a>
+
+    {% endif %}
+
+    <strong>
+
+        Page {{ page_obj.number }}
+
+        of
+
+        {{ page_obj.paginator.num_pages }}
+
+    </strong>
+
+    {% if page_obj.has_next %}
+
+        <a href="?page={{ page_obj.next_page_number }}">
+            Next
+        </a>
+
+        <a href="?page={{ page_obj.paginator.num_pages }}">
+            Last
+        </a>
+
+    {% endif %}
+
+</div>
 
 {% endblock %}

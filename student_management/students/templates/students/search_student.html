@@ -8,38 +8,39 @@
 
     {% csrf_token %}
 
-    <label>Student Name</label><br>
-    <input type="text" name="name" placeholder="Enter Student Name" required><br><br>
+    <input type="text" name="name" placeholder="Enter Student Name">
 
     <button type="submit">Search</button>
 
 </form>
 
-<hr>
+<br>
 
 {% if students %}
 
-<h3>Search Results</h3>
-
 <table border="1" cellpadding="10">
 
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Email</th>
-    </tr>
+<tr>
 
-    {% for student in students %}
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
 
-    <tr>
-        <td>{{ student.id }}</td>
-        <td>{{ student.name }}</td>
-        <td>{{ student.age }}</td>
-        <td>{{ student.email }}</td>
-    </tr>
+</tr>
 
-    {% endfor %}
+{% for student in students %}
+
+<tr>
+
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.age }}</td>
+    <td>{{ student.email }}</td>
+
+</tr>
+
+{% endfor %}
 
 </table>
 
